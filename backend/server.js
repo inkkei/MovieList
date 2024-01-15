@@ -8,7 +8,11 @@ import cors from "cors";
 const app = express();
 
 // middleware
-app.use(cors());
+const corsOptions = {
+  origin: "https://movielist-3l4h.onrender.com", // frontend URI (ReactJS)
+};
+app.use(cors(corsOptions));
+/* app.use(cors());
 app.use((req, res, next) => {
   res.header(
     "Access-Control-Allow-Origin",
@@ -20,7 +24,7 @@ app.use((req, res, next) => {
     "Origin, X-Requested-With, Content-Type, Accept, Authorization"
   );
   next();
-});
+}); */
 
 app.use(express.json());
 
