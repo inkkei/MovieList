@@ -9,7 +9,7 @@ const app = express();
 
 // middleware
 const corsOptions = {
-  origin: "https://movielist-3l4h.onrender.com", // frontend URI (ReactJS)
+  origin: "https://movielist-3l4h.onrender.com:4000", // frontend URI (ReactJS)
 };
 app.use(cors(corsOptions));
 /* app.use(cors());
