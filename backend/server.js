@@ -8,13 +8,25 @@ import cors from "cors";
 const app = express();
 
 // middleware
-app.use(
-  cors({
-    origin: "https://movielist-3l4h.onrender.com",
-    headers: ["Content-Type"],
-    credentials: true,
-  })
-);
+app.use(function (req, res, next) {
+  const allowedOrigins = [
+    "https://localhost:4000",
+    "http://localhost:4000",
+    "https://movielist-3l4h.onrender.com",
+    "http://movielist-3l4h.onrender.com",
+  ];
+  const origin = req.headers.origin;
+  if (allowedOrigins.includes(origin)) {
+    res.setHeader("Access-Control-Allow-Origin", origin);
+  }
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+  );
+  res.header("Access-Control-Allow-credentials", true);
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, UPDATE");
+  next();
+});
 
 /* app.use(cors());
 app.use((req, res, next) => {
