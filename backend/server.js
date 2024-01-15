@@ -8,10 +8,14 @@ import cors from "cors";
 const app = express();
 
 // middleware
-const corsOptions = {
-  origin: "https://movielist-3l4h.onrender.com:4000", // frontend URI (ReactJS)
-};
-app.use(cors(corsOptions));
+app.use(
+  cors({
+    origin: "https://movielist-3l4h.onrender.com",
+    headers: ["Content-Type"],
+    credentials: true,
+  })
+);
+
 /* app.use(cors());
 app.use((req, res, next) => {
   res.header(
