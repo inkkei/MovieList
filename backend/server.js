@@ -10,7 +10,10 @@ const app = express();
 // middleware
 app.use(cors());
 app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Origin",
+    "https://movielist-3l4h.onrender.com"
+  );
   res.header("Acces-Control-Allow-Methods", "GET, POST, DELETE");
   res.header(
     "Acces-Control-Allow-Headers",
