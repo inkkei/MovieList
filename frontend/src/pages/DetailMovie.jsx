@@ -28,7 +28,7 @@ export const DetailMovie = () => {
     const movie = { movieId: id, userId: user?.uid, list: listTitle };
     try {
       await axios.delete(
-        "https://checkyourmovielist.onrender.com/deleteFromList",
+        "https://corsmirror.onrender.com/v1/cors?url=https://checkyourmovielist.onrender.com/deleteFromList",
         movie
       );
     } catch (error) {

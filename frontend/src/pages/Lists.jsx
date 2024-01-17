@@ -13,7 +13,7 @@ export const Lists = () => {
     const body = { list: listTitle, userId: user?.uid };
     setShowedMovies([]);
     const response = await fetch(
-      "https://checkyourmovielist.onrender.com/getAll",
+      "https://corsmirror.onrender.com/v1/cors?url=https://checkyourmovielist.onrender.com/getAll",
       {
         method: "POST",
         body: JSON.stringify(body),
