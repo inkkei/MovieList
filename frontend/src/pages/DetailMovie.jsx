@@ -17,7 +17,7 @@ export const DetailMovie = () => {
     const movie = { movieId: id, userId: user.uid, list: listTitle };
     try {
       await axios.post(
-        "https://corsmirror.onrender.com/v1/cors?url=https://checkyourmovielist.onrender.com/addToList",
+        "https://cors-anywhere.herokuapp.com/https://checkyourmovielist.onrender.com/addToList",
         movie
       );
     } catch (error) {
@@ -37,12 +37,11 @@ export const DetailMovie = () => {
 
     setLists(lists.filter((item) => item !== listTitle));
   };
-
   const checkList = async () => {
     const movie = { movieId: id, userId: user?.uid };
     try {
       const response = await axios.post(
-        "https://corsmirror.onrender.com/v1/cors?url=https://checkyourmovielist.onrender.com/checkLists",
+        "https://cors-anywhere.herokuapp.com/https://checkyourmovielist.onrender.com/checkLists",
         movie
       );
 
