@@ -17,7 +17,7 @@ export const DetailMovie = () => {
     const movie = { movieId: id, userId: user.uid, list: listTitle };
     try {
       await axios.post(
-        "https://checkyourmovielist.onrender.com/addToList",
+        "https://corsmirror.onrender.com/v1/cors?url=https://checkyourmovielist.onrender.com/addToList",
         movie
       );
     } catch (error) {
@@ -42,10 +42,9 @@ export const DetailMovie = () => {
     const movie = { movieId: id, userId: user?.uid };
     try {
       const response = await axios.post(
-        "https://checkyourmovielist.onrender.com/checkLists",
+        "https://corsmirror.onrender.com/v1/cors?url=https://checkyourmovielist.onrender.com/checkLists",
         movie
       );
-      console.log(response.data);
 
       /* if (response.data.length > 0) {
         response.data.map((item) =>
