@@ -16,7 +16,7 @@ export const DetailMovie = () => {
   const addToList = (listTitle) => {
     const movie = { movieId: id, userId: user.uid, list: listTitle };
     try {
-      fetch("http://localhost:3000/api/movies/addToList", {
+      fetch("https://checkyourmovielist.onrender.com/api/movies/addToList", {
         method: "POST",
         body: JSON.stringify(movie),
         headers: {

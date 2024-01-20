@@ -8,7 +8,11 @@ import cors from "cors";
 const app = express();
 
 // middleware
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://movielist-3l4h.onrender.com/",
+  })
+);
 app.use(express.json());
 
 // routes
