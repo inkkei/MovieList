@@ -8,7 +8,7 @@ import cors from "cors";
 const app = express();
 
 // middleware
-app.use();
+app.use(cors());
 app.use(express.json());
 
 // routes
