@@ -9,28 +9,30 @@ export const Lists = () => {
   const [showedMovies, setShowedMovies] = useState([]);
   const [selectedList, setSelectedList] = useState("favourite");
 
-  const getAllMoviesInList = async (listTitle) => {
+  const getAllMoviesInList = (listTitle) => {
     const body = { list: listTitle, userId: user?.uid };
     setShowedMovies([]);
-    const response = await fetch(
-      "https://checkyourmovielist.onrender.com/api/movies//getAll",
-      {
+    try {
+      fetch("https://checkyourmovielist.onrender.com/api/movies//getAll", {
         method: "POST",
         body: JSON.stringify(body),
         headers: {
           "Content-Type": "application/json",
         },
-      }
-    );
-    const json = await response.json();
-
-    json.map((item) =>
-      fetch(
-        `https://api.themoviedb.org/3/movie/${item.movieId}?&api_key=${api_key}`
-      )
-        .then((res) => res.json())
-        .then((json) => setShowedMovies((current) => [...current, json]))
-    );
+      })
+        .then((resp) => resp.json())
+        .then((resp) =>
+          resp.map((item) =>
+            fetch(
+              `https://api.themoviedb.org/3/movie/${item.movieId}?&api_key=${api_key}`
+            )
+              .then((res) => res.json())
+              .then((json) => setShowedMovies((current) => [...current, json]))
+          )
+        );
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   useEffect(() => {
