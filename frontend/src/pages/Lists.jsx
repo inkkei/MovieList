@@ -12,13 +12,16 @@ export const Lists = () => {
   const getAllMoviesInList = async (listTitle) => {
     const body = { list: listTitle, userId: user?.uid };
     setShowedMovies([]);
-    const response = await fetch("http://localhost:3000/api/movies//getAll", {
-      method: "POST",
-      body: JSON.stringify(body),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const response = await fetch(
+      "https://checkyourmovielist.onrender.com/api/movies//getAll",
+      {
+        method: "POST",
+        body: JSON.stringify(body),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
     const json = await response.json();
 
     json.map((item) =>

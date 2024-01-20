@@ -51,13 +51,16 @@ export const DetailMovie = () => {
   const deleteFromList = (listTitle) => {
     const movie = { movieId: id, userId: user?.uid, list: listTitle };
     try {
-      fetch("http://localhost:3000/api/movies/deleteFromList", {
-        method: "DELETE",
-        body: JSON.stringify(movie),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      fetch(
+        "https://checkyourmovielist.onrender.com/api/movies/deleteFromList",
+        {
+          method: "DELETE",
+          body: JSON.stringify(movie),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
     } catch (error) {
       console.log(error);
     }
