@@ -13,7 +13,7 @@ export const Lists = () => {
     const body = { list: listTitle, userId: user?.uid };
     setShowedMovies([]);
     try {
-      fetch("https://checkyourmovielist.onrender.com/api/movies//getAll", {
+      fetch("https://checkyourmovielist.onrender.com/api/movies/getAll", {
         method: "POST",
         body: JSON.stringify(body),
         headers: {
