@@ -13,43 +13,53 @@ export const DetailMovie = () => {
   const [loading, setLoading] = useState(false);
   const [lists, setLists] = useState([]);
 
-  const addToList = async (listTitle) => {
+  const addToList = (listTitle) => {
     const movie = { movieId: id, userId: user.uid, list: listTitle };
     try {
-      await axios.post(
-        "https://checkyourmovielist.onrender.com/addToList",
-        movie
-      );
+      fetch("http://localhost:3000/api/movies/addToList", {
+        method: "POST",
+        body: JSON.stringify(movie),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
     } catch (error) {
       console.log(error);
     }
   };
-  const deleteFromList = async (listTitle) => {
+  const deleteFromList = (listTitle) => {
     const movie = { movieId: id, userId: user?.uid, list: listTitle };
     try {
-      await axios.delete(
-        "https://checkyourmovielist.onrender.com/deleteFromList",
-        movie
-      );
+      fetch("http://localhost:3000/api/movies/deleteFromList", {
+        method: "DELETE",
+        body: JSON.stringify(movie),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
     } catch (error) {
       console.log(error);
     }
 
     setLists(lists.filter((item) => item !== listTitle));
   };
-  const checkList = async () => {
+
+  const checkList = () => {
     const movie = { movieId: id, userId: user?.uid };
     try {
-      const response = await axios.post(
-        "https://checkyourmovielist.onrender.com/checkLists",
-        movie
-      );
-
-      /* if (response.data.length > 0) {
-        response.data.map((item) =>
-          setLists((current) => [...current, item.list])
-        );
-      } */
+      fetch("http://checkyourmovielist:3000/api/movies/checkLists", {
+        method: "POST",
+        body: JSON.stringify(movie),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then((resp) => resp.json())
+        .then((resp) => {
+          if (resp.length > 0) {
+            resp.map((item) => setLists((current) => [...current, item.list]));
+          }
+        });
     } catch (error) {
       console.log(error);
     }
