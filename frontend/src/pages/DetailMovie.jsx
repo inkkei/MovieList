@@ -16,7 +16,7 @@ export const DetailMovie = () => {
   const checkList = () => {
     const movie = { movieId: id, userId: user?.uid };
     try {
-      fetch("http://checkyourmovielist:4000/api/movies/checkLists", {
+      fetch("http://checkyourmovielist/api/movies/checkLists", {
         method: "POST",
         body: JSON.stringify(movie),
         headers: {
