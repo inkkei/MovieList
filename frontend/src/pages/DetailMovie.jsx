@@ -13,6 +13,27 @@ export const DetailMovie = () => {
   const [loading, setLoading] = useState(false);
   const [lists, setLists] = useState([]);
 
+  const checkList = () => {
+    const movie = { movieId: id, userId: user?.uid };
+    try {
+      fetch("http://checkyourmovielist:4000/api/movies/checkLists", {
+        method: "POST",
+        body: JSON.stringify(movie),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then((resp) => resp.json())
+        .then((resp) => {
+          if (resp.length > 0) {
+            resp.map((item) => setLists((current) => [...current, item.list]));
+          }
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const addToList = (listTitle) => {
     const movie = { movieId: id, userId: user.uid, list: listTitle };
     try {
@@ -42,27 +63,6 @@ export const DetailMovie = () => {
     }
 
     setLists(lists.filter((item) => item !== listTitle));
-  };
-
-  const checkList = () => {
-    const movie = { movieId: id, userId: user?.uid };
-    try {
-      fetch("http://checkyourmovielist:3000/api/movies/checkLists", {
-        method: "POST",
-        body: JSON.stringify(movie),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
-        .then((resp) => resp.json())
-        .then((resp) => {
-          if (resp.length > 0) {
-            resp.map((item) => setLists((current) => [...current, item.list]));
-          }
-        });
-    } catch (error) {
-      console.log(error);
-    }
   };
 
   useEffect(() => {
