@@ -11,6 +11,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "./config/firebase";
 import { Movies } from "./pages/Movies";
 import { UserContext } from "./components/UserContext";
+import { Info } from "./pages/Info";
 
 function App() {
   const [user] = useAuthState(auth);
@@ -22,10 +23,11 @@ function App() {
         <div className="main">
           <Routes>
             <Route path="/" element={<Movies />} />
-            <Route path="/About" element={<About />} />
+            <Route path="/about" element={<About />} />
             <Route path="/lists" element={<Lists />} />
             <Route path="/account" element={<Account />} />
-            <Route path="movie/:id" element={<DetailMovie />} />
+            <Route path="/movie/:id" element={<DetailMovie />} />
+            <Route path="/info" element={<Info />} />
           </Routes>
         </div>
         <Footer />

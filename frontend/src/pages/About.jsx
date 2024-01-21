@@ -17,8 +17,10 @@ export const About = () => {
         <p>
           P.S. This site is still being finalized. I have a lot of ideas for
           additional functionality, but if you have any wishes or notice any
-          errors - you can always contact me via email:
-          <span> imgnlenn@gmail.com</span>
+          errors - you can always contact me:
+          <span>
+            <a href="mailto: imgnlenn@gmail.com"> Send Email </a>
+          </span>
         </p>
       </div>
     </div>
